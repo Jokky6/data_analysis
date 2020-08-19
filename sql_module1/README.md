@@ -416,9 +416,8 @@ LEFT JOIN asian_channel.dict_lcmas_channel b1 ON a1.mkey = b1.mkey;
 			NULL 
 			)) AS new `
 
-9. `TAG 9`
+9. `TAG 9`、
 
->`7.  `TAG 9` 处
 >`LEFT JOIN asian_channel.dict_lcmas_channel b1 ON a1.mkey = b1.mkey;``
 
 10. Lastest
