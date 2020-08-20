@@ -39,7 +39,7 @@ ORDER BY
 > 左表所有数据拼接右表符合on条件的数据,on后用and连接
 
 ```shell
-from -> where -> join
+from -> join -> where
 ```
 
 ### 问题二
