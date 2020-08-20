@@ -26,7 +26,7 @@ SELECT
 	IFNULL( sum( sales_volume ), 0 ) AS sales_volumes 
 FROM
 	area_table a
-	LEFT JOIN store_table b ON a.store_id = b.store_id 
+LEFT JOIN store_table b ON a.store_id = b.store_id 
 	AND b.salesdate = DATE_SUB( curdate(), INTERVAL 1 DAY ) 
 WHERE
 	a.area = 'alpha' 
@@ -36,10 +36,7 @@ ORDER BY
 	a.store_id;
 ```
 
-> 我一开始关注 Right -- `GROUP BY`和`ORDER BY`同时存在的情况是，`ORDER　BY`对`GROUP BY`后的结果再进行排序，所以`ORDER BY`后面的排序字段需要在SELECT里出现，`ORDER BY` 子句中的列必须包含在聚合函数或 `GROUP BY` 子句中。
-
-> 真正错误原因关注sql语句执行顺序,where是在join之前执行,这时候还没有左连接
->所以 `b.salesdate = DATE_SUB( curdate(), INTERVAL 1 DAY )`不能正确执行
+> 左表所有数据拼接右表符合on条件的数据,on后用and连接
 
 ```shell
 from -> where -> join
