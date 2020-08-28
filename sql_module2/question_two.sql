@@ -44,7 +44,7 @@ SELECT
 	MAX( off_days ) max_off_days,
 	AVG( off_days ) avg_off_days
 FROM
-	off_days 
+	off_day
 WHERE
 	off_days > 1 
 GROUP BY
@@ -58,7 +58,7 @@ SELECT
 	LEAD(day,1,null) over( PARTITION BY author_id ORDER BY day ) second_day,
 	off_days
 FROM
-	off_days 
+	off_day
 WHERE
 	off_days > 1;
 
@@ -87,7 +87,7 @@ FROM
 		MAX( off_days ) max_off_days,
 		AVG( off_days ) avg_off_days 
 	FROM
-		off_days 
+		off_day
 	WHERE
 		off_days > 1 
 	GROUP BY
@@ -105,5 +105,16 @@ FROM
 	GROUP BY
 		author_id 
 	) b ON b.author_id = a.author_id;
-
+	
+	
+SELECT
+	a.* 
+FROM
+	off_day a,
+	filter t 
+WHERE
+	a.off_days = t.max_off_days 
+	AND a.author_id = t.author_id
+	
+	
 
